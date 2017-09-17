@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
+import { Router, browserHistory} from 'react-router';
 
-import App from './components/App'
+import routes from './routes'
 
 import reducers from './reducers/reduceindex';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
-    <Provider>
-        <App/>
-    </Provider>,
-    document.getElementById('root'));
+    <Provider store={createStoreWithMiddleware(reducers)}>
+        <Router history={browserHistory} routes={routes} />
+    </Provider>, document.querySelector('#root'));
 registerServiceWorker();
