@@ -10,14 +10,35 @@ class Main extends Component {
     componentWillMount() {
         this.props.fetchQuestion();
     }
+    showsQuestion(question) {
+        if (question === null) {
+            return <h3>Data processing...</h3>
+        } else {
+            return (
+                <ul>
+                    <li>Answer: {question.answer}</li>
+                    <li>Id: {question.id}</li>
+                    <li>Description: {question.description}</li>
+                </ul>
+            );
+        }
+    }
     render() {
+        console.log(this.props.question);
         return (
             <div className={'main-page'}>
                 <ActivityLog/>
                 <QuestionInfo/>
+                {this.showsQuestion(this.props.question)}
             </div>
         );
     }
 }
 
-export default connect(null, { fetchQuestion })(Main);
+function mapStateToProps(state) {
+    return {
+        question: state.questions.question
+    }
+}
+
+export default connect(mapStateToProps, { fetchQuestion })(Main);
