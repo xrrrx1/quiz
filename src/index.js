@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import registerServiceWorker from './registerServiceWorker';
 import { Router, browserHistory} from 'react-router';
+import reduxThunk from 'redux-thunk';
 
 import routes from './routes';
 
@@ -11,7 +12,7 @@ import reducers from './reducers/reduceindex';
 
 import './index.css';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
