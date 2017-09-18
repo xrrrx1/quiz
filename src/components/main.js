@@ -7,6 +7,8 @@ import ActivityLog from './main/activity-log'
 import QuestionInfo from './main/question-info'
 import Loader from './main/loader'
 import SkipQuestion from './main/skip-question'
+import AnswerBuilding from './main/answer-building'
+import AnswerProposition from './main/answer-proposition'
 
 class Main extends Component {
     componentWillMount() {
@@ -26,6 +28,8 @@ class Main extends Component {
                         <SkipQuestion
                             fetchQuestion={this.props.fetchQuestion}
                             incrementQuestionsCount={this.props.incrementQuestionsCount}/>
+                        <AnswerBuilding/>
+                        <AnswerProposition/>
                     </div>
                 ) :
                     <Loader />
