@@ -1,9 +1,12 @@
 .idea
 node_modules
 bundle.js
-src/about-page.css
+src/sass/about-page.css
 src/index.css
-src/main-page.css
-src/header.css
-src/activity-log.css
-src/question-info.css
+src/sass/main-page.css
+src/sass/header.css
+src/sass/activity-log.css
+src/sass/question-info.css
+src/sass/loader.css
+
+

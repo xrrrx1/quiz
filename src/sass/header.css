@@ -1,0 +1,8 @@
+.header {
+  background-color: #2d9bf0;
+  color: white; }
+  .header .brand {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 1.0rem; }

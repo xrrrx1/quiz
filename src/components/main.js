@@ -5,31 +5,27 @@ import { fetchQuestion } from "../actions/questions"
 
 import ActivityLog from './main/activity-log'
 import QuestionInfo from './main/question-info'
+import Loader from './main/loader'
 
 class Main extends Component {
     componentWillMount() {
         this.props.fetchQuestion();
     }
-    showsQuestion(question) {
-        if (question === null) {
-            return <h3>Data processing...</h3>
-        } else {
-            return (
-                <ul>
-                    <li>Answer: {question.answer}</li>
-                    <li>Id: {question.id}</li>
-                    <li>Description: {question.description}</li>
-                </ul>
-            );
-        }
-    }
     render() {
         console.log(this.props.question);
         return (
-            <div className={'main-page'}>
-                <ActivityLog/>
-                <QuestionInfo/>
-                {this.showsQuestion(this.props.question)}
+            <div className="main-page">
+                {this.props.question ? (
+                    <div>
+                        <ActivityLog />
+                        <QuestionInfo
+                            id={this.props.question.id}
+                            description={this.props.question.description}
+                            category={this.props.question.category}/>
+                    </div>
+                ) :
+                    <Loader />
+                }
             </div>
         );
     }
